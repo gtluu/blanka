@@ -14,7 +14,7 @@ Python 2.7.15\
 argparse 1.3.0 or higher\
 pyteomics 3.5.1 or higher\
 numpy 1.15.4 or higher\
-pandas. 0.23.4 or higher (must be released Nov 2018 or later - at the time of writing, Anaconda has the Aug 2018 release of pandas, and a newer release must be manually installed from Github or another repository\
+pandas. 0.23.4 or higher (must be released Nov 2018 or later - at the time of writing, Anaconda has the Aug 2018 release of pandas, and a newer release must be manually installed from Github or another repository)\
 subprocess\
 os\
 sys\
