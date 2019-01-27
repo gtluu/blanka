@@ -19,12 +19,12 @@ functools\
 copy
 
 ## Parameters
-######Required
+####Required
 -s [--sample] : sample input directory with single or multiple files or sample .mzXML file\
 -c [--control] : LCQ/QTOF mode = control input file path with .mzXML file extension, 
                  DD mode = control sample spot name\
 -i [--instrument] : instrument/protocol used for experiment ('lcq', 'qtof', 'dd', or 'ims')\
-######Optional
+####Optional
 --dd_template : dried droplet excel sheet with sample names (same template as IDBac) (required if instrument = 'dd')\
 -o [--output] : output directory for all generated files (default = sample directory)\
 --cpu : number of threads used (default = max-1)\
