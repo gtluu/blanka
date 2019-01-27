@@ -16,7 +16,7 @@ os\
 sys\
 multiprocessing\
 functools\
-copy\
+copy
 
 ## Parameters
 Required\
@@ -33,7 +33,7 @@ Optional\
 -m [--precursor_mz_tolerance] : absolute precursor m/z error tolerance in Da (default = 0.02 Da)\
 -p [--peak_mz_tolerance] : absolute precursor m/z error tolerance in Da (default = 0.02 Da)\
 --noise_removal_only : only perform noise removal (default = False)\
---blank_removal_only : only perform blank removal (default = False)\
+--blank_removal_only : only perform blank removal (default = False)
 
 ## Examples
 python blanka\
