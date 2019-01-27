@@ -2,9 +2,9 @@
 
 BLANKA is a command line tool used to remove noise and blank background signals from mass spectrometry data.
 
+
+## Workflow
 ![Blanka_Workflow](https://user-images.githubusercontent.com/46392631/51808383-c63f1480-2258-11e9-98d3-57b759b97d76.png)
-
-
 
 ## Installation
 No installation is required for use of BLANKA. Simply download the scripts and place them in the desired directory. The config.ini file must be editted to include the path to a local installation of MSConvert before usage.
