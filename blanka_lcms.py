@@ -189,13 +189,3 @@ def mgf_writer(spectrum_data_dict, output_dir, datatype):
         for mz, intensity in zip(spectrum_data_dict['m/z array'], spectrum_data_dict['intensity array']):
             mgf_file.write(str(mz) + ' ' + str(intensity) + "\n")
         mgf_file.write("END IONS" + "\n")
-
-def old_mgf_writer(spectrum_data_dict, output_dir, datatype):
-    # deprecated function
-    # write spectrum data to .mgf file
-    processed_sample_params = {key: spectrum_data_dict[key] for key in spectrum_data_dict.keys()
-                               if key != 'm/z array' and key != 'intensity array'}
-    processed_sample_spectra = [{'m/z array': spectrum_data_dict['m/z array'],
-                                 'intensity array': spectrum_data_dict['intensity array'],
-                                 'params': processed_sample_params}]
-    pytmgf.write(spectra=processed_sample_spectra, output=output_dir + datatype + "_data.mgf")
