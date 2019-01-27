@@ -6,30 +6,19 @@ BLANKA is a command line tool used to remove noise and blank background signals 
 No installation is required for use of BLANKA. Simply download the scripts and place them in the desired directory.
 
 ## Dependencies
-Python 2.7.15
-
-argparse 1.3.0 or higher
-
-pyteomics 3.5.1 or higher
-
-numpy 1.15.4 or higher
-
-pandas. 0.23.4 or higher
-
+Python 2.7.15\
+argparse 1.3.0 or higher\
+pyteomics 3.5.1 or higher\
+numpy 1.15.4 or higher\
+pandas. 0.23.4 or higher\
 	* must be released Nov 2018 or later - at the time of writing, Anaconda has the Aug 2018 release of pandas, 
-	  and a newer release must be manually installed from Github or another repository
-
-subprocess
-
-os
-
-sys
-
-multiprocessing
-
-functools
-
-copy
+	  and a newer release must be manually installed from Github or another repository\
+subprocess\
+os\
+sys\
+multiprocessing\
+functools\
+copy\
 
 ## Parameters
 Required
