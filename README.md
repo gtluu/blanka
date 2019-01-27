@@ -3,7 +3,7 @@
 BLANKA is a command line tool used to remove noise and blank background signals from mass spectrometry data.
 
 ## Installation
-No installation is required for use of BLANKA. Simply download the scripts and place them in the desired directory.
+No installation is required for use of BLANKA. Simply download the scripts and place them in the desired directory. The config.ini file must be editted to include the path to a local installation of MSConvert before usage.
 
 ## Dependencies
 Python 2.7.15\
@@ -37,7 +37,7 @@ Optional\
 
 ## Examples
 python blanka\
-print usage information\
+print usage information
 
 perform noise and blank removal on data actinomycetes.mzXML\
 ```python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq```
