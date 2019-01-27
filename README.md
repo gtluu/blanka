@@ -2,10 +2,10 @@
 
 BLANKA is a command line tool used to remove noise and blank background signals from mass spectrometry data.
 
-Installation:
+# Installation
 No installation is required for use of BLANKA. Simply download the scripts and place them in the desired directory.
 
-Dependencies:
+# Dependencies
 Python 2.7.15
 argparse 1.3.0 or higher
 pyteomics 3.5.1 or higher
@@ -20,7 +20,7 @@ multiprocessing
 functools
 copy
 
-Parameters:
+# Parameters
 Required
 -s [--sample] : sample input directory with single or multiple files or sample .mzXML file
 -c [--control] : LCQ/QTOF mode = control input file path with .mzXML file extension
@@ -37,27 +37,27 @@ Optional
 --noise_removal_only : only perform noise removal (default = False)
 --blank_removal_only : only perform blank removal (default = False)
 
-Examples:
-blanka
+# Examples
+python blanka
 print usage information
 
-# perform noise and blank removal on data actinomycetes.mzXML
-python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq
+perform noise and blank removal on data actinomycetes.mzXML
+```python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq```
 
-# perform noise and blank removal on data found in E:\lcms_data and outputs data to E:\blanka_output
-python blanka -s E:\lcms_data -c E:\lcms_data\media_control.mzXML -o E:\blanka_output -i lcq
+perform noise and blank removal on data found in E:\lcms_data and outputs data to E:\blanka_output
+```python blanka -s E:\lcms_data -c E:\lcms_data\media_control.mzXML -o E:\blanka_output -i lcq```
 
-# perform noise and blank removal on data found in E:\lcms_data\sample using multiple control files found in E:\lcms_data\control
-python blanka -s E:\lcms_data\sample -c E:\lcms_data\control -o E:\blanka_output -i lcq
+perform noise and blank removal on data found in E:\lcms_data\sample using multiple control files found in E:\lcms_data\control
+```python blanka -s E:\lcms_data\sample -c E:\lcms_data\control -o E:\blanka_output -i lcq```
 
-# convert .RAW data to .mzXML using MSConvert and perform noise and blank removal on actinomycetes.mzXML
-python blanka -s E:\lcms_data\actinomycetes.RAW -c E:\lcms_data\media_control.RAW -i lcq
+convert .RAW data to .mzXML using MSConvert and perform noise and blank removal on actinomycetes.mzXML
+```python blanka -s E:\lcms_data\actinomycetes.RAW -c E:\lcms_data\media_control.RAW -i lcq```
 
-# perform noise and blank removal on data actinomycetes.mzXML with custom retention time and precursor mz tolerance
-python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq -r 0.5 -m 0.1
+perform noise and blank removal on data actinomycetes.mzXML with custom retention time and precursor mz tolerance
+```python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq -r 0.5 -m 0.1```
 
-# performs noise and blank removal on dried droplet maldi data using 'media_control' spots as control
-python blanka -s E:\maldi_data\ -c media_control -o E:\blanka_output -i dd
+performs noise and blank removal on dried droplet maldi data using 'media_control' spots as control
+```python blanka -s E:\maldi_data\ -c media_control -o E:\blanka_output -i dd```
 
-# performs blank removal only on dried droplet maldi data using 'media_control' spots as control
-python blanka -s E:\maldi_data\ -c media_control -o E:\blanka_output -i dd --blank_removal_only True
+performs blank removal only on dried droplet maldi data using 'media_control' spots as control
+```python blanka -s E:\maldi_data\ -c media_control -o E:\blanka_output -i dd --blank_removal_only True```
