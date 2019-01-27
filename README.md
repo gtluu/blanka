@@ -36,26 +36,26 @@ Optional\
 --blank_removal_only : only perform blank removal (default = False)
 
 ## Examples
-python blanka\
-print usage information
+Print usage information.\
+```python blanka```
 
-perform noise and blank removal on data actinomycetes.mzXML\
+Perform noise and blank removal on data actinomycetes.mzXML\
 ```python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq```
 
-perform noise and blank removal on data found in E:\lcms_data and outputs data to E:\blanka_output\
+Perform noise and blank removal on data found in E:\lcms_data and outputs data to E:\blanka_output\
 ```python blanka -s E:\lcms_data -c E:\lcms_data\media_control.mzXML -o E:\blanka_output -i lcq```
 
-perform noise and blank removal on data found in E:\lcms_data\sample using multiple control files found in E:\lcms_data\control\
+Perform noise and blank removal on data found in E:\lcms_data\sample using multiple control files found in E:\lcms_data\control\
 ```python blanka -s E:\lcms_data\sample -c E:\lcms_data\control -o E:\blanka_output -i lcq```
 
-convert .RAW data to .mzXML using MSConvert and perform noise and blank removal on actinomycetes.mzXML\
+Convert .RAW data to .mzXML using MSConvert and perform noise and blank removal on actinomycetes.mzXML\
 ```python blanka -s E:\lcms_data\actinomycetes.RAW -c E:\lcms_data\media_control.RAW -i lcq```
 
-perform noise and blank removal on data actinomycetes.mzXML with custom retention time and precursor mz tolerance\
+Perform noise and blank removal on data actinomycetes.mzXML with custom retention time and precursor mz tolerance\
 ```python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq -r 0.5 -m 0.1```
 
-performs noise and blank removal on dried droplet maldi data using 'media_control' spots as control\
+Performs noise and blank removal on dried droplet maldi data using 'media_control' spots as control\
 ```python blanka -s E:\maldi_data\ -c media_control -o E:\blanka_output -i dd```
 
-performs blank removal only on dried droplet maldi data using 'media_control' spots as control\
+Performs blank removal only on dried droplet maldi data using 'media_control' spots as control\
 ```python blanka -s E:\maldi_data\ -c media_control -o E:\blanka_output -i dd --blank_removal_only True```
