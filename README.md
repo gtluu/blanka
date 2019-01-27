@@ -2,43 +2,69 @@
 
 BLANKA is a command line tool used to remove noise and blank background signals from mass spectrometry data.
 
-# Installation
+## Installation
 No installation is required for use of BLANKA. Simply download the scripts and place them in the desired directory.
 
-# Dependencies
+## Dependencies
 Python 2.7.15
+
 argparse 1.3.0 or higher
+
 pyteomics 3.5.1 or higher
+
 numpy 1.15.4 or higher
+
 pandas. 0.23.4 or higher
+
 	* must be released Nov 2018 or later - at the time of writing, Anaconda has the Aug 2018 release of pandas, 
 	  and a newer release must be manually installed from Github or another repository
+
 subprocess
+
 os
+
 sys
+
 multiprocessing
+
 functools
+
 copy
 
-# Parameters
+## Parameters
 Required
+
 -s [--sample] : sample input directory with single or multiple files or sample .mzXML file
+
 -c [--control] : LCQ/QTOF mode = control input file path with .mzXML file extension
+
                  DD mode = control sample spot name
+
 -i [--instrument] : instrument/protocol used for experiment ('lcq', 'qtof', 'dd', or 'ims')
+
 Optional
+
 --dd_template : dried droplet excel sheet with sample names (same template as IDBac) (required if instrument = 'dd')
+
 -o [--output] : output directory for all generated files (default = sample directory)
+
 --cpu : number of threads used (default = max-1)
+
 --signal_noise_ratio : integer signal to noise ratio used for noise removal (default = 4)
+
 -r [--retention_time_tolerance] : retention time tolerance range in seconds (default = 0.1 sec)
+
 -m [--precursor_mz_tolerance] : absolute precursor m/z error tolerance in Da (default = 0.02 Da)
+
 -p [--peak_mz_tolerance] : absolute precursor m/z error tolerance in Da (default = 0.02 Da)
+
 --noise_removal_only : only perform noise removal (default = False)
+
 --blank_removal_only : only perform blank removal (default = False)
 
-# Examples
+## Examples
 python blanka
+
 print usage information
 
 perform noise and blank removal on data actinomycetes.mzXML
