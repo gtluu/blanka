@@ -31,7 +31,7 @@ def raw_data_detection(args, file_directory):
 def msconvert(args, msconvert_list):
     # convert raw data files detected into .mzXML format using MSConvert and default Sanchez Lab settings
     with open('config.ini', 'r') as config_file:
-        msconvert_path = config_file.read().split('=')[1]
+        msconvert_path = config_file.read().split('=')[1] + ' '
     for files in msconvert_list:
         if args['output'] == '':
             args['output'] = files[1]
