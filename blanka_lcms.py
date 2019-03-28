@@ -30,8 +30,8 @@ def raw_data_detection(args, file_directory):
 
 def msconvert(args, msconvert_list):
     # convert raw data files detected into .mzXML format using MSConvert and default Sanchez Lab settings
-    msconvert_path = 'C:\\Users\\SanchezLab\\Desktop\\blanka\\pwiz\\msconvert.exe '
-    #msconvert_path = 'C:\\Users\\Gordon\\Documents\\mzxml_data\\pwiz\\msconvert.exe '
+    with open('config.ini', 'r') as config_file:
+        msconvert_path = config_file.read().split('=')[1]
     for files in msconvert_list:
         if args['output'] == '':
             args['output'] = files[1]
