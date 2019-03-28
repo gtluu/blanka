@@ -9,14 +9,13 @@ import blanka_maldi_dd as dd
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--cpu', help="number of threads to use - default = max-1", default=cpu_count() - 1, type=int)
-    parser.add_argument('-i', '--instrument', help="instrument/experiment: choose 'lcq', 'qtof', 'dd', or 'ims'",
-                        default='', type=str, required=True)
-    parser.add_argument('-s', '--sample', help="sample input directory with single or multiple files", type=str, default='',
-                        required=True)
-    parser.add_argument('-c', '--control', help="control input file path with '.mzXML' file extension (lcq/qtof) or name of \
-                                           control sample spot (dd)", type=str, default='', required=True)
+    parser.add_argument('--instrument', help="instrument/experiment: choose 'lcq', 'qtof', 'dd', or 'ims'",
+                        default='', type=str)
+    parser.add_argument('--sample', help="sample input directory with single or multiple files", type=str, default='')
+    parser.add_argument('--control', help="control input file path with '.mzXML' file extension (lcq/qtof) or name of \
+                                           control sample spot (dd)", type=str, default='')
     parser.add_argument('--dd_template', help='dried droplet excel sheet with sample names', default='', type=str)
-    parser.add_argument('-o', '--output', help="output directory for all generated files; default=source folder",
+    parser.add_argument('--output', help="output directory for all generated files; default=source folder",
                         type=str, default='')
     parser.add_argument('--signal_noise_ratio', help="integer signal to noise ratio - default = 4", default=4, type=int)
     parser.add_argument('-r', '--retention_time_tolerance', help="retention time error in seconds - default = 0.1 s",
@@ -74,7 +73,7 @@ def run_lcms(args):
                 # remove noise and write to .mgf
                 print "Removing Blank"
                 spectra_compare_args = partial(lcms.spectra_compare, args, control_noiseless_data)
-                processed_data = pool.map(spectra_compare_args, sample_noiseless_data, chunksize=200)
+                processed_data = filter(None, pool.map(spectra_compare_args, sample_noiseless_data, chunksize=200))
                 for processed_spectrum, changed_spectrum_data in processed_data:
                     lcms.mgf_writer(processed_spectrum, blanka_output, 'processed')
                     if changed_spectrum_data != None:
@@ -110,7 +109,7 @@ def run_lcms(args):
                 sample_data = list(pytmzxml.read(dataset))
                 print "Removing Blank"
                 spectra_compare_args = partial(lcms.spectra_compare, args, control_data)
-                processed_data = pool.map(spectra_compare_args, sample_data, chunksize=200)
+                processed_data = filter(None, pool.map(spectra_compare_args, sample_data, chunksize=200))
                 for processed_spectrum, changed_spectrum_data in processed_data:
                     lcms.mgf_writer(processed_spectrum, blanka_output, 'processed')
                     if changed_spectrum_data != None:
