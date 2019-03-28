@@ -23,13 +23,11 @@ def parse_maldi_template(args, msconvert_list):
 
 def msconvert(args, msconvert_list):
     # convert raw data files detected into .mzXML format using MSConvert and default Sanchez Lab settings
-    with open('config.ini', 'r') as config:
-        msconvert_path = config.read()
-        msconvert_path = msconvert_path.split('=')[1]
+    msconvert_path = 'C:\\Users\\SanchezLab\\Desktop\\blanka\\pwiz\\msconvert.exe '
     for files in msconvert_list:
         if args['output'] == '':
             args['output'] = files[0][:files[0].find('fid')]
-        msconvert = msconvert_path + ' ' + files[0] + " -o " + args['output'] + " --outfile " + files[1] + \
+        msconvert = msconvert_path + files[0] + " -o " + args['output'] + " --outfile " + files[1] + \
                     ' --mzXML --32 --mz32 --inten32\
                     --filter "titleMaker <RunId>.<ScanNumber>.<ScanNumber>.<ChargeState>"\
                     --filter "peakPicking true 1-2"'
@@ -127,3 +125,13 @@ def mgf_writer(spectrum_data_dict, output_dir, datatype):
         for mz, intensity in zip(spectrum_data_dict['m/z array'], spectrum_data_dict['intensity array']):
             mgf_file.write(str(mz) + ' ' + str(intensity) + "\n")
         mgf_file.write("END IONS" + "\n")
+
+def old_mgf_writer(spectrum_data_dict, output_dir, datatype):
+    # deprecated function
+    # write spectrum data to .mgf file
+    processed_sample_params = {key: spectrum_data_dict[key] for key in spectrum_data_dict.keys()
+                               if key != 'm/z array' and key != 'intensity array'}
+    processed_sample_spectra = [{'m/z array': spectrum_data_dict['m/z array'],
+                                 'intensity array': spectrum_data_dict['intensity array'],
+                                 'params': processed_sample_params}]
+    pytmgf.write(spectra=processed_sample_spectra, output=output_dir + datatype + "_data.mgf")
