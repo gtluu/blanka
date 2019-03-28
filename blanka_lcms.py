@@ -30,13 +30,12 @@ def raw_data_detection(args, file_directory):
 
 def msconvert(args, msconvert_list):
     # convert raw data files detected into .mzXML format using MSConvert and default Sanchez Lab settings
-    with open('config.ini', 'r') as config:
-        msconvert_path = config.read()
-        msconvert_path = msconvert_path.split('=')[1]
+    msconvert_path = 'C:\\Users\\SanchezLab\\Desktop\\blanka\\pwiz\\msconvert.exe '
+    #msconvert_path = 'C:\\Users\\Gordon\\Documents\\mzxml_data\\pwiz\\msconvert.exe '
     for files in msconvert_list:
         if args['output'] == '':
             args['output'] = files[1]
-        msconvert = msconvert_path + ' ' + files[0] + " -o " + args['output'] + ' --mzXML --32 --mz32 --inten32\
+        msconvert = msconvert_path + files[0] + " -o " + args['output'] + ' --mzXML --32 --mz32 --inten32\
                     --filter "titleMaker <RunId>.<ScanNumber>.<ScanNumber>.<ChargeState>"\
                     --filter "peakPicking true 1-2"'
         print msconvert
@@ -71,6 +70,7 @@ def load_control_data(args):
         control_data = []
         for control in control_files:
             control_data += list(pytmzxml.read(control))
+        print len(control_data)
         return control_data
 
 def select_control_spectrum(args, ms_mode, ret_time, precursor_mz, control_spectra_data):
@@ -158,7 +158,7 @@ def spectra_compare(args, control_dataset, sample_spectrum):
     control_spectrum = select_control_spectrum(args, ms_mode, ret_time, precursor_mz, control_dataset)
     if control_spectrum == None:
         return [sample_spectrum, None]
-    else:
+    elif ms_mode != 2:
         processed_spectrum = blank_removal(sample_spectrum, control_spectrum, args['peak_mz_tolerance'])
         return processed_spectrum
         # processed_spectrum = [sample_spectrum, changed_dict]
@@ -189,3 +189,13 @@ def mgf_writer(spectrum_data_dict, output_dir, datatype):
         for mz, intensity in zip(spectrum_data_dict['m/z array'], spectrum_data_dict['intensity array']):
             mgf_file.write(str(mz) + ' ' + str(intensity) + "\n")
         mgf_file.write("END IONS" + "\n")
+
+def old_mgf_writer(spectrum_data_dict, output_dir, datatype):
+    # deprecated function
+    # write spectrum data to .mgf file
+    processed_sample_params = {key: spectrum_data_dict[key] for key in spectrum_data_dict.keys()
+                               if key != 'm/z array' and key != 'intensity array'}
+    processed_sample_spectra = [{'m/z array': spectrum_data_dict['m/z array'],
+                                 'intensity array': spectrum_data_dict['intensity array'],
+                                 'params': processed_sample_params}]
+    pytmgf.write(spectra=processed_sample_spectra, output=output_dir + datatype + "_data.mgf")
