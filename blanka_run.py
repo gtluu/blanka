@@ -9,7 +9,7 @@ import blanka_maldi_dd as dd
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--cpu', help="number of threads to use - default = max-1", default=cpu_count() - 1, type=int)
-    parser.add_argument('--instrument', help="instrument/experiment: choose 'lcq', 'qtof', 'dd', or 'ims'",
+    parser.add_argument('--instrument', help="instrument/experiment: choose 'lcq', 'qtof', or 'dd'",
                         default='', type=str)
     parser.add_argument('--sample', help="sample input directory with single or multiple files", type=str, default='')
     parser.add_argument('--control', help="control input file path with '.mzXML' file extension (lcq/qtof) or name of \
