@@ -46,22 +46,22 @@ Print usage information.\
 ```python blanka```
 
 Perform noise and blank removal on data actinomycetes.mzXML\
-```python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq```
+```python blanka --sample E:\lcms_data\actinomycetes.mzXML --control E:\lcms_data\media_control.mzXML --instrument lcq```
 
 Perform noise and blank removal on data found in E:\lcms_data and outputs data to E:\blanka_output\
-```python blanka -s E:\lcms_data -c E:\lcms_data\media_control.mzXML -o E:\blanka_output -i lcq```
+```python blanka --sample E:\lcms_data --control E:\lcms_data\media_control.mzXML --output E:\blanka_output --instrument lcq```
 
 Perform noise and blank removal on data found in E:\lcms_data\sample using multiple control files found in E:\lcms_data\control\
-```python blanka -s E:\lcms_data\sample -c E:\lcms_data\control -o E:\blanka_output -i lcq```
+```python blanka --sample E:\lcms_data\sample --control E:\lcms_data\control --output E:\blanka_output --instrument lcq```
 
 Convert .RAW data to .mzXML using MSConvert and perform noise and blank removal on actinomycetes.mzXML\
-```python blanka -s E:\lcms_data\actinomycetes.RAW -c E:\lcms_data\media_control.RAW -i lcq```
+```python blanka --sample E:\lcms_data\actinomycetes.RAW --control E:\lcms_data\media_control.RAW --instrument lcq```
 
 Perform noise and blank removal on data actinomycetes.mzXML with custom retention time and precursor mz tolerance\
-```python blanka -s E:\lcms_data\actinomycetes.mzXML -c E:\lcms_data\media_control.mzXML -i lcq -r 0.5 -m 0.1```
+```python blanka --sample E:\lcms_data\actinomycetes.mzXML --control E:\lcms_data\media_control.mzXML --instrument lcq --retention_time_tolerance 0.5 --peak_mz_tolerance 0.1```
 
 Performs noise and blank removal on dried droplet maldi data using 'media_control' spots as control\
-```python blanka -s E:\maldi_data\ -c media_control -o E:\blanka_output -i dd```
+```python blanka --sample E:\maldi_data\ --control media_control --output E:\blanka_output --instrument dd```
 
 Performs blank removal only on dried droplet maldi data using 'media_control' spots as control\
-```python blanka -s E:\maldi_data\ -c media_control -o E:\blanka_output -i dd --blank_removal_only True```
+```python blanka --sample E:\maldi_data\ --control media_control --output E:\blanka_output --instrument dd --blank_removal_only True```
